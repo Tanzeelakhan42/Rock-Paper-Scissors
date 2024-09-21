@@ -85,8 +85,8 @@ html {
 
 .buttons-box {
   /* background-color: yellow; */
-  width: 20%;
-  height: 90%;
+  width: 280px;
+  height: 260px;
   position: relative;
 }
 .button-1 {
@@ -184,7 +184,7 @@ html {
   width: 24%;
   position: absolute;
   right: 20px;
-  bottom: 64px;
+  bottom: 100px;
 }
 .game-rule {
   font-size: 22px;
