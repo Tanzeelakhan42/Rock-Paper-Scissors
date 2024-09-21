@@ -9,7 +9,9 @@ html {
 
 .main-container {
   background-color: #8cc461;
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .score-container {
   /* background-color: lightcoral; */
@@ -18,6 +20,7 @@ html {
   justify-content: center;
   align-items: center;
   padding: 40px 0px;
+  flex: 1;
 }
 .score-card {
   /* background-color: yellow; */
@@ -73,10 +76,142 @@ html {
 }
 
 .game-container {
-  background-color: pink;
+  /* background-color: pink; */
   height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.footer {
+
+.buttons-box {
+  /* background-color: yellow; */
+  width: 20%;
+  height: 90%;
+  position: relative;
+}
+.button-1 {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  border: 12px solid #0074b6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.line-1 {
+  height: 4%;
+  width: 84%;
   background-color: black;
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.button-2 {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 12px solid #ffa943;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.line-2 {
+  height: 4%;
+  width: 58%;
+  background-color: black;
+  position: absolute;
+  top: 54%;
+  right: 0%;
+  transform: rotate(-60deg) translateY(-50%);
+  z-index: 0;
+}
+.button-3 {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border: 12px solid #bd00ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.line-3 {
+  height: 4%;
+  width: 58%;
+  background-color: black;
+  position: absolute;
+  top: 54%;
+  left: 0%;
+  transform: rotate(60deg) translateY(-50%);
+  z-index: 0;
+}
+
+.footer {
+  /* background-color: black; */
   height: 10%;
+  padding: 5px;
+  position: relative;
+}
+.rules-button {
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+}
+.game-rules-box {
+  background-color: #004429;
+  color: white;
+  padding: 10px;
+  border: 6px solid white;
+  border-radius: 10px;
+  width: 24%;
+  position: absolute;
+  right: 20px;
+  bottom: 64px;
+}
+.game-rule {
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  list-style-type: square;
+}
+li {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+.cross-button {
+  background-color: #ff0000;
+  width: 40px;
+  height: 40px;
+  border: 5px solid white;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -20px;
+  top: -24px;
 }
