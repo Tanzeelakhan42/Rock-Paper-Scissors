@@ -185,6 +185,7 @@ html {
   position: absolute;
   right: 20px;
   bottom: 100px;
+  display: none;
 }
 .game-rule {
   font-size: 22px;
@@ -214,4 +215,76 @@ li {
   position: absolute;
   right: -20px;
   top: -24px;
+}
+.game-result-box {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.you-picked-button {
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  position: absolute;
+  left: 240px;
+  border: 10px solid#BD00FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc-picked-button {
+  background-color: white;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  position: absolute;
+  right: 240px;
+  border: 10px solid #ffa943;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.text-box1 {
+  background-color: #8cc461;
+  color: white;
+  font-size: 60px;
+  font-weight: bolder;
+  text-align: center;
+}
+.text-box2 {
+  background-color: #8cc461;
+  color: white;
+  font-size: 36px;
+  font-weight: bolder;
+  text-align: center;
+}
+.play-again-button {
+  background-color: white;
+  color: #6b6b6b;
+  height: 56px;
+  width: 240px;
+  border-radius: 10px;
+  border: 5px solid white;
+  font-size: 20px;
+  font-weight: bolder;
+  position: absolute;
+  bottom: -66px;
+}
+.paper-image,
+.scissor-image,
+.rock-image {
+  display: none;
+}
+.pc-paper-image,
+.pc-scissor-image,
+.pc-rock-image {
+  display: none;
 }
