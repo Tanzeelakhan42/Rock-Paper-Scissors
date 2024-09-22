@@ -258,6 +258,7 @@ li {
   font-size: 60px;
   font-weight: bolder;
   text-align: center;
+  text-transform: uppercase;
 }
 .text-box2 {
   background-color: #8cc461;
@@ -265,6 +266,7 @@ li {
   font-size: 36px;
   font-weight: bolder;
   text-align: center;
+  text-transform: uppercase;
 }
 .play-again-button {
   background-color: white;

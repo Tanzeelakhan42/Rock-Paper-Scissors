@@ -13,6 +13,15 @@ const paperImage = document.querySelector(".paper-image");
 const pcScissorImage = document.querySelector(".pc-scissor-image");
 const pcRockImage = document.querySelector(".pc-rock-image");
 const pcPaperImage = document.querySelector(".pc-paper-image");
+const computerScoreElement = document.querySelector(".computer-score-value");
+const yourScoreElement = document.querySelector(".your-score-value");
+const textBox1 = document.querySelector(".text-box1");
+const textBox2 = document.querySelector(".text-box2");
+
+let computerScore;
+let yourScore;
+let computerScoreValue = 0;
+let yourScoreValue = 0;
 
 console.log(gameRuleBox);
 rulesButton.addEventListener("click", function () {
@@ -30,7 +39,12 @@ button1.addEventListener("click", function () {
   rockImage.style.display = "block";
   paperImage.style.display = "none";
   scissorImage.style.display = "none";
-  getComputerOption();
+  let ComputerScore = getComputerOption();
+  yourScore = "Rock";
+  console.log("This is Computer Score", ComputerScore);
+  let Winner = determineWinner(yourScore, computerScore);
+  console.log("Winner is ", Winner);
+  calculateScore(Winner);
 });
 button2.addEventListener("click", function () {
   console.log("button2");
@@ -39,7 +53,12 @@ button2.addEventListener("click", function () {
   paperImage.style.display = "block";
   scissorImage.style.display = "none";
   rockImage.style.display = "none";
-  getComputerOption();
+  let ComputerScore = getComputerOption();
+  yourScore = "Paper";
+  console.log("This is Computer Score", ComputerScore);
+  let Winner = determineWinner(yourScore, computerScore);
+  console.log("Winner is ", Winner);
+  calculateScore(Winner);
 });
 button3.addEventListener("click", function () {
   console.log("button3");
@@ -48,7 +67,12 @@ button3.addEventListener("click", function () {
   scissorImage.style.display = "block";
   rockImage.style.display = "none";
   paperImage.style.display = "none";
-  getComputerOption();
+  let ComputerScore = getComputerOption();
+  yourScore = "Scissor";
+  console.log("This is Computer Score", ComputerScore);
+  let Winner = determineWinner(yourScore, computerScore);
+  console.log("Winner is ", Winner);
+  calculateScore(Winner);
 });
 playAgainButton.addEventListener("click", function () {
   console.log("PlayAgainButton");
@@ -63,13 +87,56 @@ function getComputerOption() {
     pcRockImage.style.display = "block";
     pcPaperImage.style.display = "none";
     pcScissorImage.style.display = "none";
+    computerScore = "Rock";
   } else if (currentOption == 2) {
     pcRockImage.style.display = "none";
     pcPaperImage.style.display = "block";
     pcScissorImage.style.display = "none";
+    computerScore = "Paper";
   } else {
     pcRockImage.style.display = "none";
     pcPaperImage.style.display = "none";
     pcScissorImage.style.display = "block";
+    computerScore = "Scissor";
   }
+  return computerScore;
+}
+function determineWinner(yourScore, computerScore) {
+  if (yourScore == computerScore) {
+    console.log("It is a tie");
+    textBox2.textContent = "";
+    textBox1.textContent = "TIE UP";
+    return "Tie";
+  } else if (yourScore == "Rock" && computerScore == "Scissor") {
+    console.log("You Won");
+    textBox1.textContent = "You Won";
+    textBox2.textContent = "Against PC";
+    return "Player Won";
+  } else if (yourScore == "Scissor" && computerScore == "Paper") {
+    console.log("You Won");
+    textBox1.textContent = "You Won";
+    textBox2.textContent = "Against PC";
+    return "Player Won";
+  } else if (yourScore == "Paper" && computerScore == "Rock") {
+    console.log("You Won");
+    textBox1.textContent = "You Won";
+    textBox2.textContent = "Against PC";
+    return "Player Won";
+  } else {
+    textBox1.textContent = "You Lost";
+    textBox2.textContent = "Against PC";
+    console.log("Computer Won");
+    return "Computer Won";
+  }
+}
+function calculateScore(currentScore) {
+  if (currentScore == "Player Won") {
+    yourScoreValue = yourScoreValue + 1;
+  } else if (currentScore == "Computer Won") {
+    computerScoreValue = computerScoreValue + 1;
+  }
+  console.log("Your Score", yourScoreValue);
+  console.log("Computer Score", computerScoreValue);
+  computerScoreElement.textContent = computerScoreValue;
+  yourScoreElement.textContent = yourScoreValue;
 }
