@@ -232,6 +232,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 .pc-picked-button {
   background-color: white;
@@ -289,4 +290,21 @@ li {
 .pc-scissor-image,
 .pc-rock-image {
   display: none;
+}
+.winner-button-border {
+  box-shadow: 0 0 0 26px #289a27, 0 0 0 54px #32a62f, 0 0 0 82px #66b248;
+}
+.you-picked-box {
+  color: white;
+  position: absolute;
+  top: 49%;
+  left: 20%;
+  z-index: 1;
+}
+.pc-picked-box {
+  color: white;
+  position: absolute;
+  top: 49%;
+  right: 20%;
+  z-index: 1;
 }

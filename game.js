@@ -17,6 +17,8 @@ const computerScoreElement = document.querySelector(".computer-score-value");
 const yourScoreElement = document.querySelector(".your-score-value");
 const textBox1 = document.querySelector(".text-box1");
 const textBox2 = document.querySelector(".text-box2");
+const youPickedButton = document.querySelector(".you-picked-button");
+const pcPickedButton = document.querySelector(".pc-picked-button");
 
 let computerScore;
 let yourScore;
@@ -106,25 +108,45 @@ function determineWinner(yourScore, computerScore) {
     console.log("It is a tie");
     textBox2.textContent = "";
     textBox1.textContent = "TIE UP";
+    youPickedButton.style.border = "10px solid #0074B6";
+    youPickedButton.classList.remove("winner-button-border");
+    pcPickedButton.classList.remove("winner-button-border");
+    pcPickedButton.style.border = "10px solid #0074B6";
     return "Tie";
   } else if (yourScore == "Rock" && computerScore == "Scissor") {
     console.log("You Won");
     textBox1.textContent = "You Won";
     textBox2.textContent = "Against PC";
+    youPickedButton.classList.add("winner-button-border");
+    pcPickedButton.classList.remove("winner-button-border");
+    pcPickedButton.style.border = "10px solid #ffa943";
+    youPickedButton.style.border = "10px solid #BD00FF";
     return "Player Won";
   } else if (yourScore == "Scissor" && computerScore == "Paper") {
     console.log("You Won");
     textBox1.textContent = "You Won";
     textBox2.textContent = "Against PC";
+    youPickedButton.classList.add("winner-button-border");
+    pcPickedButton.classList.remove("winner-button-border");
+    pcPickedButton.style.border = "10px solid #ffa943";
+    youPickedButton.style.border = "10px solid #BD00FF";
     return "Player Won";
   } else if (yourScore == "Paper" && computerScore == "Rock") {
     console.log("You Won");
     textBox1.textContent = "You Won";
     textBox2.textContent = "Against PC";
+    youPickedButton.classList.add("winner-button-border");
+    pcPickedButton.classList.remove("winner-button-border");
+    pcPickedButton.style.border = "10px solid #ffa943";
+    youPickedButton.style.border = "10px solid #BD00FF";
     return "Player Won";
   } else {
     textBox1.textContent = "You Lost";
     textBox2.textContent = "Against PC";
+    pcPickedButton.classList.add("winner-button-border");
+    youPickedButton.classList.remove("winner-button-border");
+    pcPickedButton.style.border = "10px solid #ffa943";
+    youPickedButton.style.border = "10px solid #BD00FF";
     console.log("Computer Won");
     return "Computer Won";
   }
