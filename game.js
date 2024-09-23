@@ -19,6 +19,9 @@ const textBox1 = document.querySelector(".text-box1");
 const textBox2 = document.querySelector(".text-box2");
 const youPickedButton = document.querySelector(".you-picked-button");
 const pcPickedButton = document.querySelector(".pc-picked-button");
+const mainContainer2 = document.querySelector(".main-container-2");
+const mainContainer = document.querySelector(".main-container");
+const nextButton = document.querySelector(".next-button");
 
 let computerScore;
 let yourScore;
@@ -34,6 +37,13 @@ crossButton.addEventListener("click", function () {
   console.log("crossButton");
   gameRuleBox.style.display = "none";
 });
+
+nextButton.addEventListener("click", function () {
+  console.log("buttonClick");
+  mainContainer2.style.display = "block";
+  mainContainer2.style.display = "none";
+});
+
 button1.addEventListener("click", function () {
   console.log("button1");
   gameResultBox.style.display = "flex";
