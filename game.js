@@ -29,29 +29,32 @@ let yourScore;
 let computerScoreValue = 0;
 let yourScoreValue = 0;
 
-console.log(gameRuleBox);
 rulesButton.addEventListener("click", function () {
-  console.log("buttonClick");
   gameRuleBox.style.display = "block";
 });
 crossButton.addEventListener("click", function () {
-  console.log("crossButton");
   gameRuleBox.style.display = "none";
 });
 
 nextButton.addEventListener("click", function () {
-  console.log("buttonClick");
   mainContainer2.style.display = "block";
   mainContainer.style.display = "none";
 });
 playAgainButton2.addEventListener("click", function () {
-  console.log("buttonClick");
   mainContainer2.style.display = "none";
-  mainContainer.style.display = "block";
+  mainContainer.style.display = "flex";
+  buttonsBox.style.display = "block";
+  gameResultBox.style.display = "none";
+  localStorage.removeItem("computerScore");
+  localStorage.removeItem("yourScore");
+  computerScoreValue = 0;
+  yourScoreValue = 0;
+  computerScoreElement.textContent = 0;
+  yourScoreElement.textContent = 0;
+  nextButton.style.display = "none";
 });
 
 button1.addEventListener("click", function () {
-  console.log("button1");
   gameResultBox.style.display = "flex";
   buttonsBox.style.display = "none";
   rockImage.style.display = "block";
@@ -59,13 +62,12 @@ button1.addEventListener("click", function () {
   scissorImage.style.display = "none";
   let ComputerScore = getComputerOption();
   yourScore = "Rock";
-  console.log("This is Computer Score", ComputerScore);
-  let Winner = determineWinner(yourScore, computerScore);
-  console.log("Winner is ", Winner);
+
+  let Winner = determineWinner(yourScore, ComputerScore);
+
   calculateScore(Winner);
 });
 button2.addEventListener("click", function () {
-  console.log("button2");
   gameResultBox.style.display = "flex";
   buttonsBox.style.display = "none";
   paperImage.style.display = "block";
@@ -73,13 +75,12 @@ button2.addEventListener("click", function () {
   rockImage.style.display = "none";
   let ComputerScore = getComputerOption();
   yourScore = "Paper";
-  console.log("This is Computer Score", ComputerScore);
-  let Winner = determineWinner(yourScore, computerScore);
-  console.log("Winner is ", Winner);
+
+  let Winner = determineWinner(yourScore, ComputerScore);
+
   calculateScore(Winner);
 });
 button3.addEventListener("click", function () {
-  console.log("button3");
   gameResultBox.style.display = "flex";
   buttonsBox.style.display = "none";
   scissorImage.style.display = "block";
@@ -87,20 +88,19 @@ button3.addEventListener("click", function () {
   paperImage.style.display = "none";
   let ComputerScore = getComputerOption();
   yourScore = "Scissor";
-  console.log("This is Computer Score", ComputerScore);
-  let Winner = determineWinner(yourScore, computerScore);
-  console.log("Winner is ", Winner);
+
+  let Winner = determineWinner(yourScore, ComputerScore);
+
   calculateScore(Winner);
 });
 playAgainButton.addEventListener("click", function () {
-  console.log("PlayAgainButton");
   buttonsBox.style.display = "block";
   gameResultBox.style.display = "none";
 });
 
 function getComputerOption() {
   let currentOption = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-  console.log(currentOption);
+
   if (currentOption == 1) {
     pcRockImage.style.display = "block";
     pcPaperImage.style.display = "none";
@@ -121,7 +121,6 @@ function getComputerOption() {
 }
 function determineWinner(yourScore, computerScore) {
   if (yourScore == computerScore) {
-    console.log("It is a tie");
     textBox2.textContent = "";
     textBox1.textContent = "TIE UP";
     youPickedButton.style.border = "10px solid #0074B6";
@@ -130,7 +129,6 @@ function determineWinner(yourScore, computerScore) {
     pcPickedButton.style.border = "10px solid #0074B6";
     return "Tie";
   } else if (yourScore == "Rock" && computerScore == "Scissor") {
-    console.log("You Won");
     textBox1.textContent = "You Won";
     textBox2.textContent = "Against PC";
     youPickedButton.classList.add("winner-button-border");
@@ -139,7 +137,6 @@ function determineWinner(yourScore, computerScore) {
     youPickedButton.style.border = "10px solid #BD00FF";
     return "Player Won";
   } else if (yourScore == "Scissor" && computerScore == "Paper") {
-    console.log("You Won");
     textBox1.textContent = "You Won";
     textBox2.textContent = "Against PC";
     youPickedButton.classList.add("winner-button-border");
@@ -148,7 +145,6 @@ function determineWinner(yourScore, computerScore) {
     youPickedButton.style.border = "10px solid #BD00FF";
     return "Player Won";
   } else if (yourScore == "Paper" && computerScore == "Rock") {
-    console.log("You Won");
     textBox1.textContent = "You Won";
     textBox2.textContent = "Against PC";
     youPickedButton.classList.add("winner-button-border");
@@ -163,18 +159,36 @@ function determineWinner(yourScore, computerScore) {
     youPickedButton.classList.remove("winner-button-border");
     pcPickedButton.style.border = "10px solid #ffa943";
     youPickedButton.style.border = "10px solid #BD00FF";
-    console.log("Computer Won");
+
     return "Computer Won";
   }
 }
 function calculateScore(currentScore) {
-  if (currentScore == "Player Won") {
-    yourScoreValue = yourScoreValue + 1;
-  } else if (currentScore == "Computer Won") {
-    computerScoreValue = computerScoreValue + 1;
+  if (currentScore === "Player Won") {
+    yourScoreValue += 1;
+  } else if (currentScore === "Computer Won") {
+    computerScoreValue += 1;
   }
-  console.log("Your Score", yourScoreValue);
-  console.log("Computer Score", computerScoreValue);
+
   computerScoreElement.textContent = computerScoreValue;
   yourScoreElement.textContent = yourScoreValue;
+
+  localStorage.setItem("computerScore", computerScoreValue);
+  localStorage.setItem("yourScore", yourScoreValue);
+
+  if (computerScoreValue < yourScoreValue) {
+    nextButton.style.display = "block";
+  } else {
+    nextButton.style.display = "none";
+  }
 }
+document.addEventListener("DOMContentLoaded", function () {
+  let storedComputerScore = localStorage.getItem("computerScore");
+  let storedYourScore = localStorage.getItem("yourScore");
+
+  computerScoreValue = storedComputerScore ? parseInt(storedComputerScore) : 0;
+  yourScoreValue = storedYourScore ? parseInt(storedYourScore) : 0;
+
+  computerScoreElement.textContent = computerScoreValue;
+  yourScoreElement.textContent = yourScoreValue;
+});

@@ -175,6 +175,13 @@ html {
   padding: 5px;
   position: relative;
 }
+.rules-next-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  padding: 0px 10px;
+}
 .rules-button {
   width: 100px;
   height: 34px;
@@ -183,9 +190,9 @@ html {
   border: 2px solid white;
   border-radius: 10px;
   background-color: transparent;
-  position: absolute;
-  right: 2%;
-  bottom: 40%;
+  /* position: absolute;
+  right: 14%;
+  bottom: 40%; */
 }
 .next-button {
   width: 100px;
@@ -195,9 +202,10 @@ html {
   border: 2px solid white;
   border-radius: 10px;
   background-color: transparent;
-  position: absolute;
-  right: 8%;
-  bottom: 40%;
+  /* position: absolute;
+  right: 2%;
+  bottom: 40%; */
+  display: none;
 }
 
 .game-rules-box {
@@ -219,8 +227,23 @@ html {
 }
 
 .list {
-  list-style-type: square;
+  list-style-type: none;
 }
+
+.list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.list li::before {
+  content: "■";
+  color: yellow;
+  position: absolute;
+  left: -4px;
+  top: 10px;
+  font-size: 20px;
+}
+
 li {
   margin-bottom: 16px;
   font-size: 16px;
@@ -397,6 +420,42 @@ li {
   position: absolute;
   bottom: 10%;
 }
+@keyframes rotateStar {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes pulseStar {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.star-1,
+.star-2,
+.star-3,
+.star-4,
+.star-5,
+.star-6,
+.star-7,
+.star-8,
+.star-9 {
+  animation: rotateStar 5s infinite ease-in-out,
+    pulseStar 3s infinite ease-in-out;
+}
+
 .star-1 {
   position: absolute;
   height: 26%;
@@ -470,6 +529,7 @@ li {
   font-weight: lighter;
   text-align: center;
   position: absolute;
-  bottom: 10%;
-  left: 42%;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
