@@ -22,6 +22,7 @@ const pcPickedButton = document.querySelector(".pc-picked-button");
 const mainContainer2 = document.querySelector(".main-container-2");
 const mainContainer = document.querySelector(".main-container");
 const nextButton = document.querySelector(".next-button");
+const playAgainButton2 = document.querySelector(".play-again-button2");
 
 let computerScore;
 let yourScore;
@@ -41,7 +42,12 @@ crossButton.addEventListener("click", function () {
 nextButton.addEventListener("click", function () {
   console.log("buttonClick");
   mainContainer2.style.display = "block";
+  mainContainer.style.display = "none";
+});
+playAgainButton2.addEventListener("click", function () {
+  console.log("buttonClick");
   mainContainer2.style.display = "none";
+  mainContainer.style.display = "block";
 });
 
 button1.addEventListener("click", function () {
